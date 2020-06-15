@@ -121,7 +121,7 @@ function scoreboard(inning, num1) {
   let score = 0;
 
  for (let i = 0; i < num1; i++) {
- console.log(`${i} inning: ${score += inning()} - ${score += inning()}`); 
+ console.log(`${i+1} inning: ${score += inning()} - ${score += inning()}`); 
 }
 
 }

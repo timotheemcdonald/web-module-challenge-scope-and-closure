@@ -27,12 +27,13 @@ function processFirstItem(stringList, callback) {
  * Study the code for counter1 and counter2. Answer the questions below.
  * 
  * 1. What is the difference between counter1 and counter2?
- * 
+ * Counter1 is a variable whose value is a Function. Counter 2 is a Function.
  * 2. Which of the two uses a closure? How can you tell?
- * 
+ * Counter1 uses a closure: it has a nested function, counter, that references a variable, count, in its parent function.
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
- *
-*/
+ * Counter1 would be preferred if we wanted to re-use the counter function for different variables without affecting our 'count' variable. We could make several different counters and they would each have their version of 'count' stored in memory.
+ * Counter 2 would be useful if we only ever needed one instance of count, and the numerical value didn't need to reset.
+*/ 
 
 // counter1 code
 function counterMaker() {
@@ -52,15 +53,17 @@ function counter2() {
 }
 
 
+
+
 /* Task 2: inning() 
 
 Write a function called `inning` that generates a random number of points that a team scored in an inning. This should be a whole number between 0 and 2. */
 
-function inning(/*Code Here*/){
-
-    /*Code Here*/
-
+function inning(){
+    return Math.floor((Math.random() * 3));
 }
+
+console.log(inning());
 
 /* Task 3: finalScore()
 
@@ -76,11 +79,22 @@ finalScore(inning, 9) might return:
 
 */ 
 
-function finalScore(/*code Here*/){
-
-  /*Code Here*/
-
+function finalScore(inning, num1){
+ let score = {};
+ let x = 0;
+ let y = 0;
+ 
+ for (let i = 0; i < num1; i++) {
+  x += inning();
+  y += inning();
 }
+  score.Home = x;
+  score.Away = y;
+  return score;
+}
+
+console.log(finalScore(inning, 9));
+
 
 /* Task 4: 
 
@@ -103,8 +117,13 @@ and returns the score at each pont in the game, like so:
 
 Final Score: 6 - 10 */
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+function scoreboard(inning, num1) {
+  let score = 0;
+
+ for (let i = 0; i < num1; i++) {
+ console.log(`${i} inning: ${score += inning()} - ${score += inning()}`); 
 }
 
+}
 
+console.log(scoreboard(inning,9));
